@@ -1,9 +1,10 @@
 {
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "es6": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": ["prettier", "plugin:react/recommended", "airbnb"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -16,5 +17,9 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": {}
+  "rules": {
+    "jsx-a11y/no-static-element-interactions": "off", // 关闭非交互元素加事件必须加 role
+    "jsx-a11y/click-events-have-key-events": "off", // 关闭click事件要求有对应键盘事件
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
+  }
 }
