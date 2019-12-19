@@ -20,6 +20,7 @@
   "rules": {
     "jsx-a11y/no-static-element-interactions": "off", // 关闭非交互元素加事件必须加 role
     "jsx-a11y/click-events-have-key-events": "off", // 关闭click事件要求有对应键盘事件
-    "jsx-a11y/no-noninteractive-element-interactions": "off"
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "import/prefer-default-export": "off"
   }
 }
