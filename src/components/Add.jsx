@@ -2,33 +2,33 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 class Add extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      addText: '',
-    };
-  }
-
   onHandleChange = (e) => {
-    this.setState({
-      addText: e.target.value,
-    });
+    const { todoText } = this.props;
+    todoText(e.target.value);
+  };
+
+  handleClick = () => {
+    const { addTodo, addText } = this.props;
+    addTodo(addText);
   };
 
   render() {
-    const { addText } = this.state;
-    const { addTodo } = this.props;
+    const { addText } = this.props;
     return (
       <div>
         <input value={addText} onChange={this.onHandleChange} />
-        <button type="button" onClick={() => addTodo(addText)}>ADD</button>
+        <button type="button" onClick={this.handleClick}>
+          ADD
+        </button>
       </div>
     );
   }
 }
 
 Add.propTypes = {
+  addText: PropTypes.instanceOf(String).isRequired,
   addTodo: PropTypes.func.isRequired,
+  todoText: PropTypes.func.isRequired,
 };
 
 export default Add;
