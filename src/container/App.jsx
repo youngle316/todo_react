@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import AddContainer from './AddContainer';
 import ContentListContainer from './ContentListContainer';
 import FooterContainer from './FooterContainer';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class App extends Component {
+class App extends PureComponent {
   render() {
     return (
       <div>

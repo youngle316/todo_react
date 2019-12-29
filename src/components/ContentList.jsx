@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import ContentItem from './ContentItem';
 
 class ContentList extends PureComponent {
+  componentDidMount() {
+    const { fetchTodos } = this.props;
+    fetchTodos();
+  }
+
   render() {
     const { todoList, toggleTodo } = this.props;
     return (
@@ -24,6 +29,7 @@ class ContentList extends PureComponent {
 ContentList.propTypes = {
   todoList: PropTypes.instanceOf(Array).isRequired,
   toggleTodo: PropTypes.func.isRequired,
+  fetchTodos: PropTypes.func.isRequired,
 };
 
 export default ContentList;

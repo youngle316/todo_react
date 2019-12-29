@@ -1,8 +1,43 @@
 import {
-  ADD_TODO, TOGGLE_TODO, SET_FILTER, TODO_TEXT,
+  ADD_TODO,
+  TOGGLE_TODO,
+  SET_FILTER,
+  TODO_TEXT,
+  FETCH_TODOS_REQUEST,
+  FETCH_TODOS_SUCCESS,
+  FETCH_TODOS_FAILURE,
 } from './actionTypes';
 
 let nextTodoId = 0;
+
+const fetchTodosRequest = () => ({
+  type: FETCH_TODOS_REQUEST,
+});
+
+const fetchTodosSuccess = (data) => ({
+  type: FETCH_TODOS_SUCCESS,
+  data,
+});
+
+const fetchTodosFailure = (error) => ({
+  type: FETCH_TODOS_FAILURE,
+  error,
+});
+
+export const fetchTodos = () => (dispatch) => {
+  dispatch(fetchTodosRequest());
+  return fetch('./mock/todos.json').then(
+    (response) => {
+      response.json().then((data) => {
+        dispatch(fetchTodosSuccess(data));
+      });
+    },
+    (error) => {
+      dispatch(fetchTodosFailure(error));
+      console.log(`An Error occurred: ${error}`);
+    },
+  );
+};
 
 /**
  * 新增待办事项
